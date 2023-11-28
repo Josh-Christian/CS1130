@@ -9,8 +9,8 @@
         <h1>Find the Factorial, Average, and Sum of N</h1>
     </headers>
         <input type="number" name="num" id="num" 
-        class="input" placeholder="Input Number"> 
-        <button onclick="doThreeThings()">Let's go!</button>
+        placeholder="Input Number"> 
+        <button onclick="magic()">Let's go!</button>
 
         <br><br>
         <a href="temperature_conversion.html">Convert Temperature</a> 
@@ -20,50 +20,34 @@
         <a href="index.html">Go Home</a>
 </main>
 <script>
+	function magic() {
+	
+	userInput = parseInt(document.getElementById("num").value);
+	
+	let factorial = 1;
+	let i = 1;
+	while (i <= userInput) {
+		factorial *= i;
+		i++;
+	}
 
-    function getNthFactorial(a) {
-        let factorial = 1;
-        let i = 1;
-        while (i <= a) {
-            factorial = factorial * i;
-            i++;
-        }
-        console.log(n);
-        return factorial;
+    let sum = 0;
+    let j = 1;
+    do {
+        sum += j;
+        j++;
+    } while (j <= userInput);
+	
+	let average = 0;
+    let k = 1;
+    for (k; k <= userInput; k++) {
+        average += k;
     }
-
-    function getSum(a) {
-        let sum = 0;
-        let i = 0;
-        do {
-            sum += i;
-            i++;
-        } while (i < a);
-        console.log("sum");
-        return sum;
-    }
-
-    function getAverage(a) {
-        // use for loop.....
-        let average = 0;
-        let i = 0;
-        for (i; i < a; i++) {
-            average += 0;
-        }
-        average /= n;
-        console.log("avg");
-        return average;
-    }
-
-    function doThreeThings() {
-        const n = document.getElementById("num");
-        firstThing = getNthFactorial(n);
-        secondThing = getSum(n);
-        thirdThing = getAverage(n);
-        let string = "test test";
-        
-        displayResults = alert(firstThing);
-    }
+    average /= userInput;
+	
+	alert("Nth Factorial: " + factorial + "\nSum: " + sum + "\nAverage: " + average);
+	}
+	
 </script>
 </body>
 </html>
