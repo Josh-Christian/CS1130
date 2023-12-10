@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<title>(⓿_⓿)</title>
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    table {
+      background-color: rgb(213, 173, 230);
+    }
+	
+    h1 {
+      background-color: rgb(197, 135, 235);
+    }
+    
+    .link {
+      font-size: medium;
+      text-align: center;
+    }
+
+
+</style>
+</head>
+<body>
+
+<h1><center>Simple Payroll</center></h1>
+<br>
+<br>
+<form id="payrollForm">
+
+<center>
+<label for="employeename">Employee Name</label>
+<input id="employeename" type="text" placeholder="Insert Name Here">
+
+<label for="hourswork">Days Worked</label>
+<input id="hourswork" type="number" placeholder="Put Date">
+
+<label for="rate">Daily rate</label>
+<input id="rate" type="number" placeholder="Daily rate">
+
+<label for="deduction">Deduction Amount</label>
+<input id="deduction" type="number" placeholder="Amount to Deduct">
+<button type="button" onclick="Add()">Add</button>
+</center>
+<br>
+<br>
+<h2><center>Payroll List</center></h2>
+<br>
+<br>
+<table style="width: 100%;">
+ <thead>
+  <tr>
+    <th>No.</th>
+    <th>Employee Name</th>
+    <th>Days Worked</th>
+	<th>Daily Rate</th>
+	<th>Gross Pay</th>
+	<th>Deduction Amount</th>
+	<th>Net Pay</th>
+  </tr>
+ </thead>
+ <tbody id="payrollTableBody"></tbody>
+</table>
+
+<center><h2>Delete</h2>
+<label for="DeleteLineNumber">Enter Line Number to Delete Employee</label>
+<input id="DeleteLineNumber" type="number">
+<button type="button" onclick="deleteEmployee()">Delete</button>
+</center>
+
+<br><br><br><br>
+<div class="link">
+<a href="measurement_conversion.html">Convert Measurement</a> 
+<br><br>
+<a href="income_tax_calculator.html">Income Tax Calculator</a>
+<br><br>
+<a href="three_things.html">Do Three Things with N Number</a> 
+<br><br>
+<a href="index.html">Go Home</a>
+</div>
+
+<script>
+let payrollList = [];
+
+function Add() {
+	const employeename = document.getElementById("employeename").value;
+	const hourswork = parseFloat(document.getElementById("hourswork").value);
+	const rate = parseFloat(document.getElementById("rate").value);
+	const deduction = parseFloat(document.getElementById("deduction").value);
+	
+	const Grosspay = hourswork * rate;
+	const Netpay = Grosspay - deduction;
+	
+	const employee = {
+	employeename,
+	hourswork,
+	rate,
+	Grosspay,
+	deduction,
+	Netpay
+};
+	
+	payrollList.push(employee);
+	
+	displayPayrollList();
+	clearForm();
+}
+
+function deleteEmployee() {
+    const DeleteLineNumber = parseInt(document.getElementById("DeleteLineNumber").value);
+
+    if (DeleteLineNumber >= 1 && DeleteLineNumber <= payrollList.length) {
+	payrollList.splice(DeleteLineNumber - 1, 1);
+	displayPayrollList();
+	} else {alert
+	("Invalid Number, Please choose a number you want to delete!");
+  }
+}
+
+function displayPayrollList() {
+        const tableBody = document.getElementById("payrollTableBody");
+        tableBody.innerHTML = '';
+
+        payrollList.forEach((employee, index) => {
+          const row = tableBody.insertRow();
+
+          const cellNo = row.insertCell(0);
+          const cellName = row.insertCell(1);
+          const cellDaysWorked = row.insertCell(2);
+          const cellDailyRate = row.insertCell(3);
+          const cellGrossPay = row.insertCell(4);
+          const cellDeductionAmount = row.insertCell(5);
+          const cellNetPay = row.insertCell(6);
+          const cellAction = row.insertCell(7);
+
+          cellNo.textContent = index + 1;
+          cellName.textContent = employee.employeename;
+          cellDaysWorked.textContent = employee.hourswork;
+          cellDailyRate.textContent = employee.rate.toFixed(2);
+          cellGrossPay.textContent = employee.Grosspay.toFixed(2);
+          cellDeductionAmount.textContent = employee.deduction.toFixed(2);
+          cellNetPay.textContent = employee.Netpay.toFixed(2);
+          cellAction.innerHTML = '<button type="button" onclick="deleteEmployee()">Delete</button>';
+        });
+      }
+    function clearForm() {
+      document.getElementById("employeename").value = '';
+      document.getElementById("hourswork").value = '';
+      document.getElementById("rate").value = '';
+      document.getElementById("deduction").value = '';
+    }
+</script>
+<table border="3%" width="50%" height="100%" bgcolor="lightblue">
+</table>
+</body>
+</html>

@@ -1,24 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <title>(￣y▽,￣)╭ </title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="contents">
 <h1>Income Tax Calculator</h1>
 
 <label for="InputIncome">Taxable Income: ₱</label>
-<input type="numbers" id="InputIncome" placeholder="Enter Tax">
+<input type="numbers" id="InputIncome" class="input" placeholder="Enter Tax">
 <button onclick="CalculateTax()">Calculate</button>
 <br>
 <p id="result"></p>
 <br>
+<div class="link">
 <a href="temperature_conversion.html">Convert Temperature</a> 
 <br><br>
 <a href="measurement_conversion.html">Convert Measurement</a> 
 <br><br>
 <a href="three_things.html">Do Three Things with N Number</a> 
 <br><br>
+<a href="payroll.html">Simple Payroll</a> 
+<br><br>
 <a href="index.html">Go Home</a>
+</div>
+</div>
+
 <script>
 function CalculateTax() {
     const income = parseFloat(document.getElementById("InputIncome").value);
@@ -37,7 +45,8 @@ function CalculateTax() {
 	else if (income > 8000000) {
 	tax = 2410000 + (income - 8000000) * 0.35; }
 	
-	document.getElementById("result").innerText = `Income Tax: ₱ ${tax.toFixed(2)}`;
+	document.getElementById("result").innerText = 
+	`Income Tax: ₱ ${tax.toFixed(2)}`;
 }
 </script>
 </body>

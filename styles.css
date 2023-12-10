@@ -1,0 +1,28 @@
+.contents {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-align: center;
+    background-color: yellow;
+    h1{
+        font-style: italic;
+        color: rgb(251, 251, 251);
+        background-color: red;
+
+    }
+}
+
+.link{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
+    background-color: blue;
+    a:link{
+        color:white;
+    }
+    a:visited{
+        color:yellow;
+    }
+}
+
+.input {
+    background-image: url(https://preview.redd.it/gzhan6rwy95c1.jpeg?width=1242&format=pjpg&auto=webp&s=74e187e2b0accaa20b188f9c17b41c484a22e507);
+}
